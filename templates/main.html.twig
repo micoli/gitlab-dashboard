@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <ul class="merge-requests">
+        {% for mergeRequest in mergeRequests %}
+            <li class="merge-request">
+                <div class="merge-request-name">{{ mergeRequest.title }}</div>
+                <div class="merge-request-branches">
+                    <div class="merge-request-source-branch">
+                        {{ mergeRequest.sourceBranch }}
+                    </div>
+                    ->
+                    <div class="merge-request-target-branch">
+                        {{ mergeRequest.targetBranch }}
+                    </div>
+                </div>
+                <div class="merge-request-author">
+                    <div class="merge-request-author-username">{{ mergeRequest.author.username }}</div>
+                    <img class="merge-request-author-picture" src="{{ mergeRequest.author.avatar_url }}"/>
+                </div>
+                <ul class="pipelines-history">
+                    {% for pipeline in mergeRequest.pipelineHistory %}
+                        <li class="pipeline-history">
+                            <div class="pipeline-status">{{ pipeline.status }}</div>
+                            (
+                            <div class="created-at">{{ pipeline.createdAt|date('d/m/Y H:i:s') }}</div>
+                            )
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="pipelines">
+                    {% for pipeline in mergeRequest.latestPipelines %}
+                        <li class="pipeline">
+                            <div class="pipeline-status">{{ pipeline.status }}</div>
+                            <div class="created-at">{{ pipeline.createdAt|date('d/m/Y H:i:s') }}</div>
+                            <ul class="stages">
+                                {% for stage in pipeline.stages %}
+                                    <li class="stage">
+                                        <div class="stage-name">{{ stage.name }}</div>
+                                        <ul class="jobs">
+                                            {% for job in stage.jobs %}
+                                                <li class="job">
+                                                    <div class="job-name">{{ job.name }}</div>
+                                                    <div class="job-status">{{ job.status }}</div>
+                                                    <div class="created-at">{{ job.createdAt|date('d/m/Y H:i:s') }}</div>
+                                                    <div class="finished-at">{{ job.finishedAt|date('d/m/Y H:i:s') }}</div>
+                                                    <div class="duration">{{ job.duration|number_format(0, '.', ' ') }}</div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <pre>
+    {{ mergeRequests|json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </pre>
+{% endblock %}

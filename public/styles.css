@@ -1,0 +1,124 @@
+body{
+    font-family: Arial;
+}
+ul.merge-requests {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+li.merge-request {
+    display: block;
+    clear: both;
+}
+
+.merge-request-name {
+    font-weight: bold;
+}
+
+ul.pipelines-history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+li.pipeline-history {
+    display: block;
+    float: left;
+}
+
+ul.pipelines {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+li.pipeline {
+    display: block;
+    clear: both;
+}
+
+ul.stages {
+    list-style: none;
+    padding: 2px;
+    margin: 2px;
+}
+
+li.stage {
+    display: block;
+    float: left;
+    border: 1px solid blue;
+}
+
+ul.jobs {
+    list-style: none;
+    padding: 2px;
+    margin: 2px;
+}
+
+li.job {
+    display: block;
+    border: 1px solid black;
+}
+
+
+div.merge-request-branches {
+    display: inline-block;
+    font-style: italic;
+}
+
+div.merge-request-source-branch {
+    display: inline-block;
+}
+
+div.merge-request-target-branch {
+    display: inline-block;
+}
+
+div.merge-request-author {
+    display: inline-block;
+}
+
+div.merge-request-author-username {
+
+}
+
+img.merge-request-author-picture {
+    width: 16px;
+}
+
+div.pipeline-status {
+    text-decoration: double;
+}
+
+div.stage-name {
+    font-weight: bold;
+}
+
+div.job-name {
+    font-weight: bold;
+    font-style: italic;
+}
+
+div.job-status {
+    font-style: italic;
+}
+
+div.created-at {
+    color: #6897BB;
+}
+
+div.finished-at {
+    color: #6897BB;
+}
+
+div.duration {
+    color: #1b9448;
+}
+
+
+
+
